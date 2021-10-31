@@ -1,17 +1,22 @@
-interface Square {
+// 태그 기법
+
+interface Square {  // tagged union
+  kind: 'square';
   width: number;
 }
 
-interface Rectangle extends Square {
+interface Rectangle {
+  kind: 'rectangle';
   height: number;
+  width: number;
 }
 
 type Shape = Square | Rectangle;
 
 function calculateArea(shape: Shape) {
-  if ('height' in shape) { // 차라리 Rectangle의 속성인 height가 있는지 확인
-    return shape.width * shape.height;  // 타입 체커의 보정
+  if (shape.kind === 'rectangle') {
+    return shape.width * shape.height;  // Rectangle 타입
   } else {
-    return shape.width * shape.width;
+    return shape.width * shape.width; // Square 타입
   }
 }
