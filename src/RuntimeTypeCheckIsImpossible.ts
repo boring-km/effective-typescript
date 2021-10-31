@@ -1,20 +1,20 @@
-// 태그 기법
+// 클래스로 만들면...
 
-interface Square {  // tagged union
-  kind: 'square';
-  width: number;
+class Square {  // tagged union
+  constructor(public width: number) {
+  }
 }
 
-interface Rectangle {
-  kind: 'rectangle';
-  height: number;
-  width: number;
+class Rectangle extends Square {
+  constructor(public width: number, public height: number) {
+    super(width);
+  }
 }
 
 type Shape = Square | Rectangle;
 
 function calculateArea(shape: Shape) {
-  if (shape.kind === 'rectangle') {
+  if (shape instanceof Rectangle) {
     return shape.width * shape.height;  // Rectangle 타입
   } else {
     return shape.width * shape.width; // Square 타입
