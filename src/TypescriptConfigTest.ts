@@ -8,4 +8,4 @@ function add(a: number, b: number) {
 
 // const x: number = null;
 
-const x: number | null = null;
+// const x: number | null = null;
