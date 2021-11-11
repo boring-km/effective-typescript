@@ -10,3 +10,8 @@ let age: number;
 age = '12' as any;
 age += 1;
 ```
+
+### any는 함수 시그니처를 무시한다
+
+- TypeSafetyTest.ts
+- TypeSafetyTest.js
